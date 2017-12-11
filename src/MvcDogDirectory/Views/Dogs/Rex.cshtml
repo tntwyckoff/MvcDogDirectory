@@ -1,0 +1,25 @@
+﻿@model IntApps.Samples.Models.DogDirectory.DogImage
+
+@{
+    ViewData["Title"] = "Image";
+}
+
+<h2>Reximus Maximus</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Breed
+        </dt>
+        <dd>
+           American Foxhound
+        </dd>
+    </dl>
+</div>
+<div>
+   <img src="@Html.Raw(ViewBag.ImageSource)" onclick="javascript:location.reload();" class="randomDogImage" alt="Click to get a new random image"/>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

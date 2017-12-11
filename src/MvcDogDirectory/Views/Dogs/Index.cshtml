@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IntApps.Samples.Models.DogDirectory.Dog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Here are the dogs we found</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Breed)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+                @if(null != item.SubBreeds && 0 < item.SubBreeds.Count ()){ 
+                  <span class="subBreedLabel">
+                  [@item.SubBreeds.Count() sub-breed(s)]
+                  </span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Sample Image", "SampleImage", new { key = item.Breed }) 
+            </td>
+        </tr>
+        @if(null != item.SubBreeds && 0 < item.SubBreeds.Count ()){
+            <tr>
+            <td class="subBreedCell">
+               <div class="subBreedContainer">
+                  <ul>
+                     @foreach (var subBreed in item.SubBreeds){
+                         <li>@subBreed</li>
+                     }
+                  </ul>
+               </div>
+            </td>
+            </tr>
+         }
+      }
+    </tbody>
+</table>
